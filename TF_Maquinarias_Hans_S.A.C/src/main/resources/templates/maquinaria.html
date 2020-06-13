@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Maquinaria</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+
+		<form th:action="@{/maquinaria/registrar}" method="post" th:object="${maquinaria}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="idmarca">ID:</label> <input type="text"
+					class="form-control" th:field="*{idMaquinaria}"></input>
+
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
+						th:field="*{nameMaquinaria}" class="form-control" id="nombre"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nameMaquinaria')}" th:errors="*{nameMaquinaria}"></div>
+
+					<label for="fechaFabricacion">FECHA DE FABRICACION:</label> <input
+						type="date" th:field="*{DateMaquinaria}" class="form-control"
+						id="fechaFabricacion"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('DateMaquinaria')}"
+						th:errors="*{DateMaquinaria}"></div>
+						
+					<label for="peso">PESO:</label> <input type="text"
+						th:field="*{pesoMaquinaria}" class="form-control" id="peso"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('pesoMaquinaria')}" th:errors="*{pesoMaquinaria}"></div>
+						
+					<label for="potencia">POTENCIA:</label> <input type="text"
+						th:field="*{potenciaMaquinaria}" class="form-control" id="potencia"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('potenciaMaquinaria')}" th:errors="*{potenciaMaquinaria}"></div>
+						
+						
+						
+					<label for="marca" class=" col-sm-2 col-form-label">Marca: </label>
+					<select
+						class="form-control" th:field="*{marca.idMarca}">
+
+						<option th:each="mar: ${listaMarcas}" th:value="${mar.idMarca}"
+							th:text="${mar.nameMarca}"
+							th:selected="(${mar.idMarca} == *{marca.idMarca})"></option>
+					</select>
+					
+					<label for="modelo" class=" col-sm-2 col-form-label">Modelo: </label>
+				    <select
+						class="form-control" th:field="*{modelo.idModelo}">
+						<option th:each="mode: ${listaModelos}" th:value="${mode.idModelo}"
+							th:text="${mode.nameModelo}"
+							th:selected="(${mode.idModelo} == *{modelo.idModelo})"></option>
+					</select>
+					
+					<label for="tipo" class=" col-sm-2 col-form-label">Tipo: </label>
+				    <select
+						class="form-control" th:field="*{tipo.idTipo}">
+						<option th:each="tip: ${listaTipos}" th:value="${tip.idTipo}"
+							th:text="${tip.nameTipo}"
+							th:selected="(${tip.idTipo} == *{tipo.idTipo})"></option>
+					</select>
+					
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/maquinaria/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

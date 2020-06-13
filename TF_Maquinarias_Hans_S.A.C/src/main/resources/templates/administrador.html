@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Administrador</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+
+		<form th:action="@{/administrador/registrar}" method="post" th:object="${administrador}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="idcargo">ID:</label> <input type="text"
+					class="form-control" th:field="*{idAdministrador}"></input>
+
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
+						th:field="*{nameAdministrador}" class="form-control" id="nombre"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nameAdministrador')}" th:errors="*{nameAdministrador}"></div>
+
+					
+					<label for="tipo" class=" col-sm-2 col-form-label">Cargo: </label>
+				    <select
+						class="form-control" th:field="*{tipo.idCargo}">
+						<option th:each="car: ${listaCargos}" th:value="${car.idCargo}"
+							th:text="${car.nameCargo}"
+							th:selected="(${car.idCargo} == *{cargo.idCargo})"></option>
+					</select>
+					
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/administrador/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

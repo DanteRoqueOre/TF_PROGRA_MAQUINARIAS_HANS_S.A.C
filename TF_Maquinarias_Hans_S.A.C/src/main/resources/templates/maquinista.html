@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Maquinista</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+
+		<form th:action="@{/maquinista/registrar}" method="post" th:object="${maquinista}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="idespecialidad">ID:</label> <input type="text"
+					class="form-control" th:field="*{idMaquinista}"></input>
+
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
+						th:field="*{nameMaquinista}" class="form-control" id="nombre"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nameMaquinista')}" th:errors="*{nameMaquinista}"></div>
+
+					<label for="edad">EDAD:</label> <input type="text"
+						th:field="*{edadMaquinista}" class="form-control" id="edad"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('edadMaquinista')}" th:errors="*{edadMaquinista}"></div>
+						
+					<label for="anio">AÑOS EXPERIENCIA:</label> <input type="text"
+						th:field="*{anioMaquinista}" class="form-control" id="anio"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('anioMaquinista')}" th:errors="*{anioMaquinista}"></div>
+						
+					<label for="especialidad" class=" col-sm-2 col-form-label">Especialidad: </label>
+					<select
+						class="form-control" th:field="*{especialidad.idEspecialidad}">
+
+						<option th:each="espe: ${listaEspecialidades}" th:value="${espe.idEspecialidad}"
+							th:text="${espe.nameEspecialidad}"
+							th:selected="(${espe.idEspecialidad} == *{especialidad.idEspecialidad})"></option>
+					</select>
+					
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/maquinista/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
