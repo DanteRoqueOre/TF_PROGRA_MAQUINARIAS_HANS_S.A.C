@@ -5,11 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.stereotype.Service;
 import pe.maquinarias.hans.spring.model.Marca;
 import pe.maquinarias.hans.spring.repository.IMarcaRepository;
 import pe.maquinarias.hans.spring.service.IMarcaService;
 
+@Service
 public class MarcaServiceImpl implements IMarcaService{
 	
 	@Autowired

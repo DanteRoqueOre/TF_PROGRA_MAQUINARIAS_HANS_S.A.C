@@ -31,13 +31,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			http.authorizeRequests()
 
 					.antMatchers("/modelo/**").access("hasRole('ROLE_ADMIN') ")
-					.antMatchers("/marca/**").access("hasRole('ROLE_ADMIN')")
+				
 					.antMatchers("/tipo/**").access("hasRole('ROLE_ADMIN')")
 					.antMatchers("/cargo/**").access("hasRole('ROLE_ADMIN')")
 					.antMatchers("/especialidad/**").access("hasRole('ROLE_ADMIN')")
 					.antMatchers("/maquinista/**").access("hasRole('ROLE_ADMIN')")
 					.antMatchers("/administrador/**").access("hasRole('ROLE_ADMIN')")
-					.antMatchers("/maquinaria/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')").and()
+					.antMatchers("/maquinaria/**").access("hasRole('ROLE_ADMIN')")
+					.antMatchers("/marca/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+					.antMatchers("/alquiler/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')").and()
 					.formLogin().successHandler(successHandler).loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/marca/listar")
 					.permitAll().and().logout().logoutSuccessUrl("/login").permitAll().and().exceptionHandling().accessDeniedPage("/error_403");
 

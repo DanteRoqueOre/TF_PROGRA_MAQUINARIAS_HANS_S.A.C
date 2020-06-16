@@ -30,12 +30,17 @@ public class AdministradorController {
 	@Autowired
 	private ICargoService caService;
 	@Autowired
-	private IAdministradorService adService;	
+	private IAdministradorService adService;
+	
+	@RequestMapping("/bienvenido")
+	public String irAdministradorBienvenido() {		
+		return "bienvenido";
+	}
 	
 	@RequestMapping("/")
 	public String irAdministrador(Map<String, Object> model) {
 		model.put("listaAdministradores", adService.listar());
-		return "listAdministradores";
+		return "listAdministrador";
 	}
 	
 	@RequestMapping("/irRegistrar")
@@ -117,13 +122,13 @@ public class AdministradorController {
 			model.put("mensaje", "Ocurrio un roche");
 			model.put("listaAdministradores", adService.listar());
 		}
-		return "listaAdministradores";
+		return "listAdministrador";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
 		model.put("listaAdministradores", adService.listar());
-		return "listaAdministradores";
+		return "listAdministrador";
 	}
 	
 	@RequestMapping("/listarId")
@@ -131,7 +136,7 @@ public class AdministradorController {
 	throws ParseException
 	{
 		adService.listarId(administrador.getIdAdministrador());
-		return "listaAdministradores";
+		return "listAdministrador";
 	}
 	
 	@RequestMapping("/buscar")

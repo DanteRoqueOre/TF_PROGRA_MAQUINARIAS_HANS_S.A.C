@@ -26,13 +26,14 @@ public class Tipo implements Serializable{
 	@Column(name="nameTipo",nullable=false,length=60)
 	private String nameTipo;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="descripcion",nullable=false,length=60)
-	private String descripcion;
-
 	public Tipo() {
 		super();
+	}
+
+	public Tipo(int idTipo, String nameTipo) {
+		super();
+		this.idTipo = idTipo;
+		this.nameTipo = nameTipo;
 	}
 
 	public int getIdTipo() {
@@ -49,13 +50,6 @@ public class Tipo implements Serializable{
 
 	public void setNameTipo(String nameTipo) {
 		this.nameTipo = nameTipo;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	}	
+	
 }

@@ -26,13 +26,16 @@ public class Especialidad implements Serializable{
 	@Column(name="nameEspecialidad",nullable=false,length=60)
 	private String nameEspecialidad;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="descripcion",nullable=false,length=60)
-	private String descripcion;
+
 
 	public Especialidad() {
 		super();
+	}
+
+	public Especialidad(int idEspecialidad, String nameEspecialidad) {
+		super();
+		this.idEspecialidad = idEspecialidad;
+		this.nameEspecialidad = nameEspecialidad;
 	}
 
 	public int getIdEspecialidad() {
@@ -49,13 +52,6 @@ public class Especialidad implements Serializable{
 
 	public void setNameEspecialidad(String nameEspecialidad) {
 		this.nameEspecialidad = nameEspecialidad;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	}	
+	
 }

@@ -20,7 +20,7 @@ public class LoginController {
 			RedirectAttributes flash) {
 
 		if (principal != null) {
-			return "redirect:/products/list";
+			return "redirect:/maquinaria/bienvenido";
 		}
 
 		if (error != null) {

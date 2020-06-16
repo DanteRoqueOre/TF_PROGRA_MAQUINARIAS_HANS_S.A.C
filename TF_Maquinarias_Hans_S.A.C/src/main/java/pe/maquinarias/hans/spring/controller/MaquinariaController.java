@@ -40,10 +40,15 @@ public class MaquinariaController {
 	@Autowired
 	private IMaquinariaService mqService;	
 	
+	@RequestMapping("/bienvenido")
+	public String irMaquinariaBienvenido() {
+		return "bienvenido";
+	}
+	
 	@RequestMapping("/")
 	public String irMaquinaria(Map<String, Object> model) {
 		model.put("listaMaquinarias", mqService.listar());
-		return "listMaquinarias";
+		return "listMaquinaria";
 	}
 	
 	@RequestMapping("/irRegistrar")
@@ -133,13 +138,13 @@ public class MaquinariaController {
 			model.put("mensaje", "Ocurrio un roche");
 			model.put("listaMascotas", mqService.listar());
 		}
-		return "listaMaquinarias";
+		return "listMaquinaria";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
 		model.put("listaMaquinarias", mqService.listar());
-		return "listaMaquinarias";
+		return "listMaquinaria";
 	}
 	
 	@RequestMapping("/listarId")
@@ -147,7 +152,7 @@ public class MaquinariaController {
 	throws ParseException
 	{
 		mqService.listarId(maquinaria.getIdMaquinaria());
-		return "listaMaquinarias";
+		return "listMaquinaria";
 	}
 	
 	@RequestMapping("/buscar")

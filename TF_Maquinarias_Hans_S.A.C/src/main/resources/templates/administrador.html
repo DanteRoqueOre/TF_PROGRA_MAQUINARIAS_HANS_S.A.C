@@ -35,7 +35,7 @@
 					
 					<label for="tipo" class=" col-sm-2 col-form-label">Cargo: </label>
 				    <select
-						class="form-control" th:field="*{tipo.idCargo}">
+						class="form-control" th:field="*{cargo.idCargo}">
 						<option th:each="car: ${listaCargos}" th:value="${car.idCargo}"
 							th:text="${car.nameCargo}"
 							th:selected="(${car.idCargo} == *{cargo.idCargo})"></option>

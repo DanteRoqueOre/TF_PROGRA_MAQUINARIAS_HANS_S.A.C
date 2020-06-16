@@ -35,18 +35,6 @@ public class Maquinaria implements Serializable{
 	@Column(name="nameMaquinaria",nullable=false, length=60)
 	private String nameMaquinaria;
 	
-	@ManyToOne
-	@JoinColumn(name="idModelo",nullable=false)
-	private Modelo modelo;
-	
-	@ManyToOne
-	@JoinColumn(name="idMarca",nullable=false)
-	private Marca marca;
-	
-	@ManyToOne
-	@JoinColumn(name="idTipo",nullable=false)
-	private Tipo tipo;
-	
 	@NotNull
 	@Past(message="No puedes seleccionar un dia que NO existe")
 	@Temporal(TemporalType.DATE)
@@ -63,7 +51,19 @@ public class Maquinaria implements Serializable{
 	@NotBlank(message="No puede estar en blanco")
 	@Column(name="potenciaMaquinaria",nullable=false, length=60)
 	private String potenciaMaquinaria;
-
+	
+	@ManyToOne
+	@JoinColumn(name="idModelo",nullable=false)
+	private Modelo modelo;
+	
+	@ManyToOne
+	@JoinColumn(name="idMarca",nullable=false)
+	private Marca marca;
+	
+	@ManyToOne
+	@JoinColumn(name="idTipo",nullable=false)
+	private Tipo tipo;
+	
 	public Maquinaria() {
 		super();
 	}

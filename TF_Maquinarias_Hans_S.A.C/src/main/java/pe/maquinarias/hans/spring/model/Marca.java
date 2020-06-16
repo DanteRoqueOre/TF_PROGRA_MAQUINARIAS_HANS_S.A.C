@@ -26,13 +26,15 @@ public class Marca implements Serializable{
 	@Column(name="nameMarca",nullable=false,length=60)
 	private String nameMarca;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="descripcion",nullable=false,length=60)
-	private String descripcion;
 
 	public Marca() {
 		super();
+	}
+
+	public Marca(int idMarca, String nameMarca) {
+		super();
+		this.idMarca = idMarca;
+		this.nameMarca = nameMarca;
 	}
 
 	public int getIdMarca() {
@@ -49,14 +51,6 @@ public class Marca implements Serializable{
 
 	public void setNameMarca(String nameMarca) {
 		this.nameMarca = nameMarca;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
+	}	
+	
 }

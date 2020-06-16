@@ -24,25 +24,25 @@ public class Maquinista implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idMaquinista;
 	
-	@ManyToOne
-	@JoinColumn(name="idEspecialidad",nullable=false)
-	private Especialidad especialidad;
-		
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="edadMaquinista",nullable=false, length=60)
-	private String edadMaquinista;
-	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
 	@Column(name="nameMaquinista",nullable=false, length=60)
 	private String nameMaquinista;
 	
+		@NotEmpty(message="No puede estar vacio")
+	@NotBlank(message="No puede estar en blanco")
+	@Column(name="edadMaquinista",nullable=false, length=60)
+	private String edadMaquinista;
+		
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
 	@Column(name="anioMaquinista",nullable=false, length=60)
 	private String anioMaquinista;
-
+	
+	@ManyToOne
+	@JoinColumn(name="idEspecialidad",nullable=false)
+	private Especialidad especialidad;
+	
 	public Maquinista() {
 		super();
 	}

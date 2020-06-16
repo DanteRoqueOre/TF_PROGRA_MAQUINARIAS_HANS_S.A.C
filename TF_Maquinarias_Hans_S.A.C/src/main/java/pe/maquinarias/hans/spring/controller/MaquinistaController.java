@@ -34,10 +34,15 @@ public class MaquinistaController {
 	@Autowired
 	private IMaquinistaService mquiService;	
 	
+	@RequestMapping("/bienvenido")
+	public String irMaquinistaBienvenido() {
+		return "bienvenido";
+	}
+	
 	@RequestMapping("/")
 	public String irMaquinista(Map<String, Object> model) {
 		model.put("listaMaquinistas", mquiService.listar());
-		return "listMaquinistas";
+		return "listMaquinista";
 	}
 	
 	@RequestMapping("/irRegistrar")
@@ -46,7 +51,7 @@ public class MaquinistaController {
 		model.addAttribute("listaEspecialidades", eService.listar());
 		model.addAttribute("especialidad", new Especialidad());
 		model.addAttribute("maquinista", new Maquinista());
-		return "administrador";		
+		return "maquinista";		
 	}
 	
 	@RequestMapping("/registrar")
@@ -119,13 +124,13 @@ public class MaquinistaController {
 			model.put("mensaje", "Ocurrio un roche");
 			model.put("listaMaquinistas", mquiService.listar());
 		}
-		return "listaMaquinistas";
+		return "listMaquinista";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
 		model.put("listaMaquinistas", mquiService.listar());
-		return "listaMaquinistas";
+		return "listMaquinista";
 	}
 	
 	@RequestMapping("/listarId")
@@ -133,7 +138,7 @@ public class MaquinistaController {
 	throws ParseException
 	{
 		mquiService.listarId(maquinista.getIdMaquinista());
-		return "listaMaquinistas";
+		return "listMaquinista";
 	}
 	
 	@RequestMapping("/buscar")

@@ -25,7 +25,7 @@ import pe.maquinarias.hans.spring.service.ICargoService;
 public class CargoController {
 	
 	@Autowired
-	private ICargoService cService;
+	private ICargoService caService;
 	
 	@RequestMapping("/bienvenido")
 	public String irCargoBienvenido() {
@@ -34,7 +34,7 @@ public class CargoController {
 	
 	@RequestMapping("/")
 	public String irCargo(Map<String,Object>model) {
-		model.put("listaCargos", cService.listar());
+		model.put("listaCargos", caService.listar());
 		return "listCargo";
 	}
 	
@@ -53,7 +53,7 @@ public class CargoController {
 			return "cargo";
 		}
 		else {
-				boolean flag = cService.insertar(objCargo);
+				boolean flag = caService.insertar(objCargo);
 				if (flag) {
 					return "redirect:/cargo/listar";
 				}
@@ -72,7 +72,7 @@ public class CargoController {
 			return "redirect:/cargo/listar";
 		}
 		else {
-			boolean flag = cService.modificar(objCargo);
+			boolean flag = caService.modificar(objCargo);
 			if (flag) {
 				objRedir.addFlashAttribute("mensaje", "Se actualizo correctamente");
 				return "redirect:/cargo/listar";
@@ -89,7 +89,7 @@ public class CargoController {
 	public String modificar(@PathVariable int id,Model model,RedirectAttributes objRedir)
 			throws ParseException 
 	{
-		Optional<Cargo> objCargo= cService.listarId(id);
+		Optional<Cargo> objCargo= caService.listarId(id);
 		if (objCargo== null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un roche");
 			return "redirect:/cargo/listar";
@@ -104,21 +104,21 @@ public class CargoController {
 	public String eliminar(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
 			if (id!=null && id > 0) {
-				cService.eliminar(id);
-				model.put("listaCargos", cService.listar());
+				caService.eliminar(id);
+				model.put("listaCargos", caService.listar());
 			}			
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un roche");
-			model.put("listaCargos", cService.listar());
+			model.put("listaCargos", caService.listar());
 		}
 		return "listCargo";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Map<String, Object> model) {
-		model.put("listaCargos", cService.listar());
+		model.put("listaCargos", caService.listar());
 		return "listCargo";
 	}
 	
@@ -126,7 +126,7 @@ public class CargoController {
 	public String listarId(Map<String, Object> model, @ModelAttribute Cargo cargo) 
 	throws ParseException
 	{
-		cService.listarId(cargo.getIdCargo());
+		caService.listarId(cargo.getIdCargo());
 		return "listCargo";
 	}
 	
@@ -136,7 +136,7 @@ public class CargoController {
 	{
 		List<Cargo> listaCargos;
 		cargo.setNameCargo(cargo.getNameCargo());
-		listaCargos = cService.buscarNombre(cargo.getNameCargo());
+		listaCargos = caService.buscarNombre(cargo.getNameCargo());
 		
 		if (listaCargos.isEmpty()) {
 			model.put("mensaje", "No se encontro");

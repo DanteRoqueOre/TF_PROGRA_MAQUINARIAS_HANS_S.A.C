@@ -5,11 +5,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.stereotype.Service;
 import pe.maquinarias.hans.spring.model.Modelo;
 import pe.maquinarias.hans.spring.repository.IModeloRepository;
 import pe.maquinarias.hans.spring.service.IModeloService;
 
+@Service
 public class ModeloServiceImpl implements IModeloService{
 	
 	@Autowired

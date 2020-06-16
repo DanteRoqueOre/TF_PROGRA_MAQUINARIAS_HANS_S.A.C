@@ -26,13 +26,15 @@ public class Cargo implements Serializable{
 	@Column(name="nameCargo",nullable=false,length=60)
 	private String nameCargo;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="descripcion",nullable=false,length=60)
-	private String descripcion;
 
 	public Cargo() {
 		super();
+	}
+
+	public Cargo(int idCargo, String nameCargo) {
+		super();
+		this.idCargo = idCargo;
+		this.nameCargo = nameCargo;
 	}
 
 	public int getIdCargo() {
@@ -49,13 +51,6 @@ public class Cargo implements Serializable{
 
 	public void setNameCargo(String nameCargo) {
 		this.nameCargo = nameCargo;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	}	
+	
 }
