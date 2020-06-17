@@ -142,12 +142,12 @@ public class TipoController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaTipos", listaTipos);
-		return "buscar";		
+		return "buscarTipo";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("tipo", new Tipo());
-		return "buscar";
+		return "buscarTipo";
 	}	
 }

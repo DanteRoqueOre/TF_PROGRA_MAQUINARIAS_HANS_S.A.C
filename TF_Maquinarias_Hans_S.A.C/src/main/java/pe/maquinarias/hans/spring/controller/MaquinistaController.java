@@ -153,12 +153,12 @@ public class MaquinistaController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaMaquinistas", listaMaquinistas);
-		return "buscar";		
+		return "buscarMaquinista";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("maquinista", new Maquinista());
-		return "buscar";
+		return "buscarMaquinista";
 	}	
 }

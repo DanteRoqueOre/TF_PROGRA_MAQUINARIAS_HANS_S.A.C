@@ -142,12 +142,12 @@ public class EspecialidadController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaEspecialidades", listaEspecialidades);
-		return "buscar";		
+		return "buscarEspecialidad";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("especialidad", new Especialidad());
-		return "buscar";
+		return "buscarEspecialidad";
 	}	
 }

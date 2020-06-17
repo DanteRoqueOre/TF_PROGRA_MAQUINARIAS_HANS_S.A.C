@@ -142,12 +142,12 @@ public class CargoController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaCargos", listaCargos);
-		return "buscar";		
+		return "buscarCargo";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("cargo", new Cargo());
-		return "buscar";
+		return "buscarCargo";
 	}	
 }

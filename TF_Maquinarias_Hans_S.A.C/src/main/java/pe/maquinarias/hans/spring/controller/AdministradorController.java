@@ -151,12 +151,12 @@ public class AdministradorController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaAdministradores", listaAdministradores);
-		return "buscar";		
+		return "buscarAdministrador";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("administrador", new Administrador());
-		return "buscar";
+		return "buscarAdministrador";
 	}	
 }

@@ -167,12 +167,12 @@ public class MaquinariaController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaMaquinarias", listaMaquinarias);
-		return "buscar";		
+		return "buscarMaquinaria";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("maquinaria", new Maquinaria());
-		return "buscar";
+		return "buscarMaquinaria";
 	}	
 }

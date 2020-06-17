@@ -142,12 +142,12 @@ public class MarcaController {
 			model.put("mensaje", "No se encontro");
 		}
 		model.put("listaMarcas", listaMarcas);
-		return "buscar";		
+		return "buscarMarca";		
 	}
 	
 	@RequestMapping("/irBuscar")
 	public String irBuscar(Model model) {
 		model.addAttribute("marca", new Marca());
-		return "buscar";
+		return "buscarMarca";
 	}	
 }
