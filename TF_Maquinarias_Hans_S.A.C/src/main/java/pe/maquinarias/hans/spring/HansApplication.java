@@ -25,7 +25,7 @@ public class HansApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		String password = "12345";
-		String contra = "pet";
+		String contra = "maquina";
 		
 		for(int i=0; i<2; i++) {
 			String bcryptPassword1 = passwordEncoder.encode(password);

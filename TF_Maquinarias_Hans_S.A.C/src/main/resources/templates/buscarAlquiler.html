@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Buscar Alquiler</title>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<form th:action="@{/alquiler/buscar}" method="post" th:object="${alquiler}">
+			<div class="form-group">
+				<label for="nameAlquiler1">Buscar:</label> <input type="text"
+					class="form-control" th:field="*{nameAlquiler}" id="nameAlquiler1"></input>
+			</div>
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/alquiler/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+
+		<table class="table table-bordered table-hover table-striped"
+			id="tab_logic">
+			<thead>
+				<tr>
+					<th class="text-center">CODIGO</th>
+					<th class="text-center">NOMBRE</th>
+					<th class="text-center">USUARIO</th>
+					<th class="text-center">MAQUINARIA</th>
+					<th class="text-center">MAQUINISTA</th>
+					<th class="text-center">FECHA ALQUILER</th>
+					<th class="text-center">CANTIDAD HORAS</th>
+					<th class="text-center">TELEFONO</th>
+					<th class="text-center">DIRECCION</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="alq: ${listaAlquileres}">
+					<td th:text="${alq.idAlquiler}"></td>
+					<td th:text="${alq.nameAlquiler}"></td>
+					<td th:text="${alq.usuario.nameUsuario}"></td>
+					<td th:text="${alq.maquinaria.nameMaquinaria}"></td>
+					<td th:text="${alq.maquinista.nameMaquinista}"></td>
+					<td th:text="${#dates.format(alq.DateAlquiler,'dd/MM/yyyy')}"></td>
+					<td th:text="${alq.horaAlquiler}"></td>
+					<td th:text="${alq.telefonoAlquiler}"></td>
+					<td th:text="${alq.direccionAlquiler}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div th:if="${mensaje}" class="alert alert-info">
+			<p th:text="${mensaje}"></p>
+		</div>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

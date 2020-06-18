@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Reserva Alquiler</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+
+		<form th:action="@{/alquiler/registrar}" method="post" th:object="${alquiler}"
+		
+			enctype="multipart/form-data">
+			<div class="form-group">
+			
+				<label for="idalquiler">ID:</label> <input type="text"
+					class="form-control" th:field="*{idAlquiler}"></input>
+
+				<div class="form-group">
+					<label for="nombre">NOMBRE:</label> <input type="text"
+						th:field="*{nameAlquiler}" class="form-control" id="nombre"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('nameAlquiler')}" th:errors="*{nameAlquiler}"></div>
+						
+						
+					<label for="usuario" class=" col-sm-2 col-form-label">Usuario: </label>
+					<select
+						class="form-control" th:field="*{usuario.idUsuario}">
+
+						<option th:each="usu: ${listaUsuarios}" th:value="${usu.idUsuario}"
+							th:text="${usu.nameUsuario}"
+							th:selected="(${usu.idUsuario} == *{usuario.idUsuario})"></option>
+					</select>
+					
+					<label for="maquinaria" class=" col-sm-2 col-form-label">Maquinaria: </label>
+				    <select
+						class="form-control" th:field="*{maquinaria.idMaquinaria}">
+						<option th:each="maq: ${listaMaquinarias}" th:value="${maq.idMaquinaria}"
+							th:text="${maq.nameMaquinaria}"
+							th:selected="(${maq.idMaquinaria} == *{maquinaria.idMaquinaria})"></option>
+					</select>
+					
+					<label for="maquinista" class=" col-sm-2 col-form-label">Maquinista: </label>
+				    <select
+						class="form-control" th:field="*{maquinista.idMaquinista}">
+						<option th:each="maqui: ${listaMaquinistas}" th:value="${maqui.idMaquinista}"
+							th:text="${maqui.nameMaquinista}"
+							th:selected="(${maqui.idMaquinista} == *{maquinista.idMaquinista})"></option>
+					</select>
+					
+					
+					<label for="fechaAlquiler">FECHA ALQUILER:</label> <input
+						type="date" th:field="*{DateAlquiler}" class="form-control"
+						id="fechaAlquiler"></input>
+						
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('DateAlquiler')}"
+						th:errors="*{DateAlquiler}"></div>
+						
+					<label for="hora">CANTIDAD HORAS:</label> <input type="text"
+						th:field="*{horaAlquiler}" class="form-control" id="hora"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('horaAlquiler')}" th:errors="*{horaAlquiler}"></div>
+						
+					<label for="telefono">TELEFONO:</label> <input type="text"
+						th:field="*{telefonoAlquiler}" class="form-control" id="telefono"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('telefonoAlquiler')}" th:errors="*{telefonoAlquiler}"></div>
+						
+					<label for="direccion">DIRECCION:</label> <input type="text"
+						th:field="*{direccionAlquiler}" class="form-control" id="direccion"></input>
+					
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('direccionAlquiler')}" th:errors="*{direccionAlquiler}"></div>
+						
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+			<a href="/alquiler/listar" class="btn btn-danger">Cancelar</a>
+
+		</form>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

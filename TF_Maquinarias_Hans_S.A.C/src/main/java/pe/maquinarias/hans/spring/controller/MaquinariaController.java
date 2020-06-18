@@ -136,7 +136,7 @@ public class MaquinariaController {
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje", "Ocurrio un roche");
-			model.put("listaMascotas", mqService.listar());
+			model.put("listaMaquinarias", mqService.listar());
 		}
 		return "listMaquinaria";
 	}

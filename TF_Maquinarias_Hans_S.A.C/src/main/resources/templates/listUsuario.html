@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		
+		<meta charset="UTF-8"></meta>
+		
+		<title>Usuarios</title>
+		
+		<script type="text/javascript"
+				src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+				rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/header :: header"></div>
+
+		<div class="container">
+		
+			<form id="myform">
+			
+				<div class="row clearfix">
+				
+					<div class="col-md-12 column" >
+						
+						<a  style="border-bottom-color: green" th:href="@{/usuario/irRegistrar}" id="add-row" type="button"
+							class="btn btn-primary btn-md left-block"> 
+							<span class="glyphicon glyphicon-plus" ></span>Usuario
+						</a>
+						
+						<a  style="border-bottom-color: green" th:href="@{/usuario/irBuscar}" id="add-row" type="button"
+							class="btn btn-primary btn-md left-block"> 
+							<span class="glyphicon glyphicon-search" ></span> 
+						</a>
+						
+						<table class="table table-bordered table-hover table-striped" id="tab_logic">
+						
+							<thead>
+								<tr>
+									<th class="text-center">CODIGO</th>
+									<th class="text-center">NOMBRE</th>
+									<th class="text-center">DNI</th>
+									<th class="text-center">RUC</th>
+									<th class="text-center">EMPRESA</th>
+									<th class="text-center">TELEFONO</th>
+									<th class="text-center">DIRECCION</th>
+									<th class="text-center">OPERACION</th>
+									<th class="text-center">OPERACION</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each="usu: ${listaUsuarios}">
+									<td th:text="${usu.idUsuario}"></td>
+									<td th:text="${usu.nameUsuario}"></td>
+									<td th:text="${usu.dniUsuario}"></td>
+									<td th:text="${usu.rucUsuario}"></td>
+									<td th:text="${usu.empresaUsuario}"></td>
+									<td th:text="${usu.telefonoUsuario}"></td>
+									<td th:text="${usu.direccionUsuario}"></td>
+									<td><a th:href="@{/usuario/eliminar?id=}+${usu.idUsuario}">Eliminar</a></td>
+									<td><a th:href="@{'/usuario/modificar/' + ${usu.idUsuario}}">Modificar</a></td>
+								</tr>
+							</tbody>
+							
+						</table>
+											
+					</div>
+				</div>	
+							
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
+				</div>
+				
+			</form>
+			
+		</div>
+
+		<div th:replace="fragments/footer :: footer"></div>
+
+	</body>
+	
+</html>
