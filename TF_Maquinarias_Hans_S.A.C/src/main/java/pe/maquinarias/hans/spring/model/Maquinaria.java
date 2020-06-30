@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -32,7 +34,7 @@ public class Maquinaria implements Serializable{
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nameMaquinaria",nullable=false, length=60)
+	@Column(name="nameMaquinaria",nullable=false, length=30)
 	private String nameMaquinaria;
 	
 	@NotNull
@@ -42,15 +44,13 @@ public class Maquinaria implements Serializable{
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateMaquinaria;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="pesoMaquinaria",nullable=false, length=60)
-	private String pesoMaquinaria;
-	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="potenciaMaquinaria",nullable=false, length=60)
-	private String potenciaMaquinaria;
+	@Min(value=700, message="Debe ser igual o mayor que 700")  
+    @Max(value=150000, message="Debe ser igual o menor que 150000") 
+	private int pesoMaquinaria;
+
+	@Min(value=50, message="Debe ser igual o mayor que 50")  
+    @Max(value=1500, message="Debe ser igual o menor que 1500") 
+	private int potenciaMaquinaria;
 	
 	@ManyToOne
 	@JoinColumn(name="idModelo",nullable=false)
@@ -68,7 +68,7 @@ public class Maquinaria implements Serializable{
 		super();
 	}
 
-	public Maquinaria(int idMaquinaria,String nameMaquinaria,Modelo modelo,Marca marca,Tipo tipo,Date dateMaquinaria,String pesoMaquinaria,String potenciaMaquinaria) {
+	public Maquinaria(int idMaquinaria,String nameMaquinaria,Modelo modelo,Marca marca,Tipo tipo,Date dateMaquinaria,int pesoMaquinaria,int potenciaMaquinaria) {
 		super();
 		this.idMaquinaria = idMaquinaria;
 		this.nameMaquinaria = nameMaquinaria;
@@ -128,19 +128,19 @@ public class Maquinaria implements Serializable{
 		this.dateMaquinaria = dateMaquinaria;
 	}
 
-	public String getPesoMaquinaria() {
+	public int getPesoMaquinaria() {
 		return pesoMaquinaria;
 	}
 
-	public void setPesoMaquinaria(String pesoMaquinaria) {
+	public void setPesoMaquinaria(int pesoMaquinaria) {
 		this.pesoMaquinaria = pesoMaquinaria;
 	}
 
-	public String getPotenciaMaquinaria() {
+	public int getPotenciaMaquinaria() {
 		return potenciaMaquinaria;
 	}
 
-	public void setPotenciaMaquinaria(String potenciaMaquinaria) {
+	public void setPotenciaMaquinaria(int potenciaMaquinaria) {
 		this.potenciaMaquinaria = potenciaMaquinaria;
 	}	
 }

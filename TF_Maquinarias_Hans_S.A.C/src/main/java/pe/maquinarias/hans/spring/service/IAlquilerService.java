@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.maquinarias.hans.spring.model.Alquiler;
 
 public interface IAlquilerService {
-	public boolean insertar(Alquiler alquiler);
+	public Integer insertar(Alquiler alquiler);
 	public boolean modificar(Alquiler alquiler);
 	public void eliminar(int idAlquiler);
 	public Optional<Alquiler> buscarId(int idAlquiler);

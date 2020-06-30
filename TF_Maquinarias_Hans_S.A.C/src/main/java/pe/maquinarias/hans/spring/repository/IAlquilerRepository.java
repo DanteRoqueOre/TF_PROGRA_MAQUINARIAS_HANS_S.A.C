@@ -12,6 +12,10 @@ import pe.maquinarias.hans.spring.model.Alquiler;
 
 @Repository
 public interface IAlquilerRepository  extends JpaRepository<Alquiler,Integer> {
+	
+	@Query("select count(aq.telefonoAlquiler)from Alquiler aq where aq.telefonoAlquiler=:telefonoAlquiler")
+	public int searchTelefonoAlquiler(@Param("telefonoAlquiler") String telefonoAlquiler);
+	
 	@Query("from Alquiler aq where aq.nameAlquiler like %:nameAlquiler%")
 	List<Alquiler> buscarNombre(@Param("nameAlquiler") String nameAlquiler);
 	

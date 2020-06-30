@@ -53,15 +53,16 @@ public class MarcaController {
 			return "marca";
 		}
 		else {
-				boolean flag = maService.insertar(objMarca);
-				if (flag) {
-					return "redirect:/marca/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/marca/irRegistrar";
-				}
+			int rpta = maService.insertar(objMarca);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe la Marca");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listMarca";
 	}
 	
 	@RequestMapping("/actualizar")

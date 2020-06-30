@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.maquinarias.hans.spring.model.Modelo;
 
 public interface IModeloService {
-	public boolean insertar(Modelo modelo);
+	public Integer insertar(Modelo modelo);
 	public boolean modificar(Modelo modelo);
 	public void eliminar(int idModelo);
 	public Optional<Modelo> buscarId(int idModelo);

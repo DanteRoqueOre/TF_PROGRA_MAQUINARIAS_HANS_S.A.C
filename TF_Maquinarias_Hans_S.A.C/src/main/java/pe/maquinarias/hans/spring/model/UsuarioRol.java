@@ -15,33 +15,31 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class Users implements Serializable {
-
-	
+@Table(name="users")
+public class UsuarioRol implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(length = 30, unique = true)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	
+	private int id;
+	
+	@Column(length=30, unique = true)
 	private String username;
-
-	@Column(length = 200)
+	
+	@Column(length=90)
 	private String password;
-
-	private Boolean enabled;
-
+	
+	private boolean enabled;
+	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name="user_id")
 	private List<Role> roles;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -61,11 +59,11 @@ public class Users implements Serializable {
 		this.password = password;
 	}
 
-	public Boolean getEnabled() {
+	public boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(Boolean enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 

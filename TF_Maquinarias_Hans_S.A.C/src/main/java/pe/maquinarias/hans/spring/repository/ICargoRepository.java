@@ -11,6 +11,10 @@ import pe.maquinarias.hans.spring.model.Cargo;
 
 @Repository
 public interface ICargoRepository extends JpaRepository<Cargo,Integer>{
+	
+	@Query("select count(ca.nameCargo)from Cargo ca where ca.nameCargo=:nameCargo")
+	public int searchNameCargo(@Param("nameCargo") String nameCargo);
+	
 	@Query("from Cargo ca where ca.nameCargo like %:nameCargo%")
 	List<Cargo> buscarNombre(@Param("nameCargo") String nameCargo);
 }

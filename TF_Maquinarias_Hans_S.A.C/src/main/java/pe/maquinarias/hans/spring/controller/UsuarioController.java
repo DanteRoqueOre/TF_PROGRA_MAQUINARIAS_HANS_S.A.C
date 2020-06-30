@@ -53,15 +53,16 @@ public class UsuarioController {
 			return "usuario";
 		}
 		else {
-				boolean flag = uService.insertar(objUsuario);
-				if (flag) {
-					return "redirect:/usuario/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/usuario/irRegistrar";
-				}
+			int rpta = uService.insertar(objUsuario);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe el DNI del usuario");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listUsuario";
 	}
 	
 	@RequestMapping("/actualizar")

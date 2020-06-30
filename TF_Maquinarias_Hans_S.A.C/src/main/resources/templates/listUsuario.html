@@ -49,9 +49,7 @@
 									<th class="text-center">CODIGO</th>
 									<th class="text-center">NOMBRE</th>
 									<th class="text-center">DNI</th>
-									<th class="text-center">RUC</th>
 									<th class="text-center">EMPRESA</th>
-									<th class="text-center">TELEFONO</th>
 									<th class="text-center">DIRECCION</th>
 									<th class="text-center">OPERACION</th>
 									<th class="text-center">OPERACION</th>
@@ -63,9 +61,7 @@
 									<td th:text="${usu.idUsuario}"></td>
 									<td th:text="${usu.nameUsuario}"></td>
 									<td th:text="${usu.dniUsuario}"></td>
-									<td th:text="${usu.rucUsuario}"></td>
 									<td th:text="${usu.empresaUsuario}"></td>
-									<td th:text="${usu.telefonoUsuario}"></td>
 									<td th:text="${usu.direccionUsuario}"></td>
 									<td><a th:href="@{/usuario/eliminar?id=}+${usu.idUsuario}">Eliminar</a></td>
 									<td><a th:href="@{'/usuario/modificar/' + ${usu.idUsuario}}">Modificar</a></td>

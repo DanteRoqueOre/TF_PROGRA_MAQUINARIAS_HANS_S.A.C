@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -33,7 +35,7 @@ private static final long serialVersionUID = 1L;
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nameAlquiler",nullable=false, length=60)
+	@Column(name="nameAlquiler",nullable=false, length=30)
 	private String nameAlquiler;
 	
 	@NotNull
@@ -43,19 +45,18 @@ private static final long serialVersionUID = 1L;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateAlquiler;
 	
-	@NotEmpty(message="No puede estar vacio")
-	@NotBlank(message="No puede estar en blanco")
-	@Column(name="horaAlquiler",nullable=false, length=60)
-	private String horaAlquiler;
+	@Min(value=5, message="Debe ser igual o mayor que 5")  
+    @Max(value=4320, message="Debe ser igual o menor que 4320") 
+	private int horaAlquiler;
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="telefonoAlquiler",nullable=false, length=60)
+	@Column(name="telefonoAlquiler",nullable=false, length=15)
 	private String telefonoAlquiler;
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="direccionAlquiler",nullable=false, length=60)
+	@Column(name="direccionAlquiler",nullable=false, length=30)
 	private String direccionAlquiler;
 	
 	@ManyToOne
@@ -74,7 +75,7 @@ private static final long serialVersionUID = 1L;
 		super();
 	}
 
-	public Alquiler(int idAlquiler,String nameAlquiler,Usuario usuario,Maquinaria maquinaria,Maquinista maquinista,Date dateAlquiler,String horaAlquiler,String telefonoAlquiler,String direccionAlquiler) {
+	public Alquiler(int idAlquiler,String nameAlquiler,Usuario usuario,Maquinaria maquinaria,Maquinista maquinista,Date dateAlquiler,int horaAlquiler,String telefonoAlquiler,String direccionAlquiler) {
 		super();
 		this.idAlquiler = idAlquiler;
 		this.nameAlquiler = nameAlquiler;
@@ -135,11 +136,11 @@ private static final long serialVersionUID = 1L;
 		this.dateAlquiler = dateAlquiler;
 	}
 
-	public String getHoraAlquiler() {
+	public int getHoraAlquiler() {
 		return horaAlquiler;
 	}
 
-	public void setHoraAlquiler(String horaAlquiler) {
+	public void setHoraAlquiler(int horaAlquiler) {
 		this.horaAlquiler = horaAlquiler;
 	}
 

@@ -20,12 +20,14 @@ public class AlquilerServiceImpl implements IAlquilerService{
 	
 	@Override
 	@Transactional
-	public boolean insertar (Alquiler alquiler) {
-		Alquiler objAlquiler= aqAlquiler.save(alquiler);
-		if(objAlquiler==null)
-			return false;
-		else
-			return true;
+	public Integer insertar (Alquiler alquiler) {
+        int rpta = aqAlquiler.searchTelefonoAlquiler(alquiler.getTelefonoAlquiler());
+		
+		if (rpta == 0) {
+			aqAlquiler.save(alquiler);
+		}
+		return rpta;
+	
 	}
 	
 	@Override

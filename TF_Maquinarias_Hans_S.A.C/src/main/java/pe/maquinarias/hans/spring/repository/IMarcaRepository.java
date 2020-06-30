@@ -12,6 +12,10 @@ import pe.maquinarias.hans.spring.model.Marca;
 
 @Repository
 public interface IMarcaRepository extends JpaRepository<Marca,Integer>{
+	
+	@Query("select count(ma.nameMarca)from Marca ma where ma.nameMarca=:nameMarca")
+	public int searchNameMarca(@Param("nameMarca") String nameMarca);
+	
 	@Query("from Marca ma where ma.nameMarca like %:nameMarca%")
 	List<Marca> buscarNombre(@Param("nameMarca") String nameMarca);
 }

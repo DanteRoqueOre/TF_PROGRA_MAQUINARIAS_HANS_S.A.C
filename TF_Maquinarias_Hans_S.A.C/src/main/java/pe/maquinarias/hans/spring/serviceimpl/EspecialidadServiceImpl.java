@@ -18,13 +18,15 @@ public class EspecialidadServiceImpl implements IEspecialidadService{
 	
 	@Override
 	@Transactional
-	public boolean insertar(Especialidad especialidad) {
-		Especialidad objEspecialidad= eEspecialidad.save(especialidad);
-		if(objEspecialidad==null)
-			return false;
-		else
-			return true;
-	}
+	public Integer insertar(Especialidad especialidad) {
+		 int rpta = eEspecialidad.searchNameEspecialidad(especialidad.getNameEspecialidad());
+			
+			if (rpta == 0) {
+				eEspecialidad.save(especialidad);
+			}
+			return rpta;
+		
+		}
 	
 	@Override
 	@Transactional

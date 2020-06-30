@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.maquinarias.hans.spring.model.Usuario;
 
 public interface IUsuarioService {
-	public boolean insertar(Usuario usuario);
+	public Integer insertar(Usuario usuario);
 	public boolean modificar(Usuario usuario);
 	public void eliminar(int idUsuario);
 	public Optional<Usuario> buscarId(int idUsuario);

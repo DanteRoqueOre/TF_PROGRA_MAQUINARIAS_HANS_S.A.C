@@ -11,6 +11,11 @@ import pe.maquinarias.hans.spring.model.Usuario;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario,Integer>{
+	
+	@Query("select count(u.dniUsuario)from Usuario u where u.dniUsuario=:dniUsuario")
+	public int searchDniUsuario(@Param("dniUsuario") String dniUsuario);
+	
+	
 	@Query("from Usuario u where u.nameUsuario like %:nameUsuario%")
 	List<Usuario> buscarNombre(@Param("nameUsuario") String nameUsuario);
 }

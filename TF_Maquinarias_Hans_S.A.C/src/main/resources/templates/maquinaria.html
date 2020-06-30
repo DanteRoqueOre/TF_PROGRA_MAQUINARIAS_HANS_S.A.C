@@ -40,13 +40,13 @@
 						th:if="${#fields.hasErrors('DateMaquinaria')}"
 						th:errors="*{DateMaquinaria}"></div>
 						
-					<label for="peso">PESO:</label> <input type="text"
+					<label for="peso">PESO (Kg):</label> <input type="text"
 						th:field="*{pesoMaquinaria}" class="form-control" id="peso"></input>
 					
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('pesoMaquinaria')}" th:errors="*{pesoMaquinaria}"></div>
 						
-					<label for="potencia">POTENCIA:</label> <input type="text"
+					<label for="potencia">POTENCIA (Hp):</label> <input type="text"
 						th:field="*{potenciaMaquinaria}" class="form-control" id="potencia"></input>
 					
 					<div class="alert alert-danger"

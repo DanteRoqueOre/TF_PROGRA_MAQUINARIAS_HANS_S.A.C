@@ -53,15 +53,16 @@ public class CargoController {
 			return "cargo";
 		}
 		else {
-				boolean flag = caService.insertar(objCargo);
-				if (flag) {
-					return "redirect:/cargo/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/cargo/irRegistrar";
-				}
+			int rpta = caService.insertar(objCargo);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe el Cargo");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listCargo";
 	}
 	
 	@RequestMapping("/actualizar")

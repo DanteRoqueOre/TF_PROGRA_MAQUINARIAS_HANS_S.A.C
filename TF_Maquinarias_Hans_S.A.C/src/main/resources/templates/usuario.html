@@ -45,25 +45,11 @@
 								th:errors="*{dniUsuario}">
 						</div>
 						
-						<label for="ruc">RUC:</label> 
-						<input type="text" th:field="*{rucUsuario}" class="form-control" id="ruc"></input>
-						
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('rucUsuario')}" 
-								th:errors="*{rucUsuario}">
-						</div>
-						
 						<label for="empresa">EMPRESA:</label> 
 						<input type="text" th:field="*{empresaUsuario}" class="form-control" id="empresa"></input>
 						
 						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('empresaUsuario')}" 
 								th:errors="*{empresaUsuario}">
-						</div>
-						
-						<label for="telefono">TELEFONO:</label> 
-						<input type="text" th:field="*{telefonoUsuario}" class="form-control" id="telefono"></input>
-						
-						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('telefonoUsuario')}" 
-								th:errors="*{telefonoUsuario}">
 						</div>
 						
 						<label for="direccion">DIRECCION:</label> 

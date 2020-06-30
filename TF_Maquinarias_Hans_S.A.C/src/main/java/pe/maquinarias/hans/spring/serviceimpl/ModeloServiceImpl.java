@@ -18,13 +18,15 @@ public class ModeloServiceImpl implements IModeloService{
 	
 	@Override
 	@Transactional
-	public boolean insertar(Modelo modelo) {
-		Modelo objModelo= moModelo.save(modelo);
-		if(objModelo==null)
-			return false;
-		else
-			return true;
-	}
+	public Integer insertar(Modelo modelo) {
+		 int rpta = moModelo.searchNameModelo(modelo.getNameModelo());
+			
+			if (rpta == 0) {
+				moModelo.save(modelo);
+			}
+			return rpta;
+		
+		}
 	
 	@Override
 	@Transactional

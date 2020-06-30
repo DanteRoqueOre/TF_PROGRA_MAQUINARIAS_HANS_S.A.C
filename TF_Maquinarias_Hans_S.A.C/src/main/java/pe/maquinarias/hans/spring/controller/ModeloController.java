@@ -53,15 +53,16 @@ public class ModeloController {
 			return "modelo";
 		}
 		else {
-				boolean flag = moService.insertar(objModelo);
-				if (flag) {
-					return "redirect:/modelo/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/modelo/irRegistrar";
-				}
+			int rpta = moService.insertar(objModelo);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe el Modelo");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listModelo";
 	}
 	
 	@RequestMapping("/actualizar")

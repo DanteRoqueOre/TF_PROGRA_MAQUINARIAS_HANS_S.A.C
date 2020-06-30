@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.maquinarias.hans.spring.model.Marca;
 
 public interface IMarcaService {
-	public boolean insertar(Marca marca);
+	public Integer insertar(Marca marca);
 	public boolean modificar(Marca marca);
 	public void eliminar(int idMarca);
 	public Optional<Marca> buscarId(int idMarca);

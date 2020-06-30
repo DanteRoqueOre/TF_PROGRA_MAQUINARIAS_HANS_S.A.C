@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.maquinarias.hans.spring.model.Tipo;
 
 public interface ITipoService {
-	public boolean insertar(Tipo tipo);
+	public Integer insertar(Tipo tipo);
 	public boolean modificar(Tipo tipo);
 	public void eliminar(int idTipo);
 	public Optional<Tipo> buscarId(int idTipo);

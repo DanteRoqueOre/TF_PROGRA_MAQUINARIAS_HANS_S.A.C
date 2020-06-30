@@ -23,7 +23,7 @@ public class Marca implements Serializable{
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nameMarca",nullable=false,length=60)
+	@Column(name="nameMarca",nullable=false,length=20)
 	private String nameMarca;
 	
 

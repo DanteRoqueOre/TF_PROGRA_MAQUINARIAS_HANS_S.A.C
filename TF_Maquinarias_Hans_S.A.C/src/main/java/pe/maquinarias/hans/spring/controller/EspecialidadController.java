@@ -53,15 +53,16 @@ public class EspecialidadController {
 			return "especialidad";
 		}
 		else {
-				boolean flag = eService.insertar(objEspecialidad);
-				if (flag) {
-					return "redirect:/especialidad/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/especialidad/irRegistrar";
-				}
+			int rpta = eService.insertar(objEspecialidad);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe la Especialidad");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listEspecialidad";
 	}
 	
 	@RequestMapping("/actualizar")

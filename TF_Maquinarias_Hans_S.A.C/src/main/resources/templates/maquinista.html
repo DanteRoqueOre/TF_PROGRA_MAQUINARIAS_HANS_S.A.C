@@ -32,13 +32,13 @@
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('nameMaquinista')}" th:errors="*{nameMaquinista}"></div>
 
-					<label for="edad">EDAD:</label> <input type="text"
+					<label for="edad">EDAD (A&Ntilde;OS):</label> <input type="text"
 						th:field="*{edadMaquinista}" class="form-control" id="edad"></input>
 					
 					<div class="alert alert-danger"
 						th:if="${#fields.hasErrors('edadMaquinista')}" th:errors="*{edadMaquinista}"></div>
 						
-					<label for="anio">A&Ntilde;OS EXPERIENCIA:</label> <input type="text"
+					<label for="anio">EXPERIENCIA (A&Ntilde;OS):</label> <input type="text"
 						th:field="*{anioMaquinista}" class="form-control" id="anio"></input>
 					
 					<div class="alert alert-danger"

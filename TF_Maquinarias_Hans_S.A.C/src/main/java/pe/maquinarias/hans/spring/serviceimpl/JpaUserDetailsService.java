@@ -13,28 +13,31 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.maquinarias.hans.spring.repository.IUsuarioRolRepository;
 import pe.maquinarias.hans.spring.model.Role;
-import pe.maquinarias.hans.spring.model.Users;
-import pe.maquinarias.hans.spring.repository.UserRepository;
+import pe.maquinarias.hans.spring.model.UsuarioRol;
+
 
 @Service
 public class JpaUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private IUsuarioRolRepository usuarioRolDao;
 
-	@Transactional(readOnly = true)
 	@Override
+	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Users user = userRepository.findByUsername(username);
+
+		UsuarioRol usuarioRol = usuarioRolDao.findByUsername(username);
 
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-		for (Role role : user.getRoles()) {
-			authorities.add(new SimpleGrantedAuthority(role.getRol()));
+		for (Role role : usuarioRol.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
 		}
 
-		return new User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, authorities);
+		return new User(usuarioRol.getUsername(), usuarioRol.getPassword(), usuarioRol.isEnabled(), true, true, true,
+				authorities);
 	}
 
 }

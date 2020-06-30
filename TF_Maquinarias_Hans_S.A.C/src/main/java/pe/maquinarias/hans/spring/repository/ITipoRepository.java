@@ -11,6 +11,10 @@ import pe.maquinarias.hans.spring.model.Tipo;
 
 @Repository
 public interface ITipoRepository extends JpaRepository<Tipo,Integer>{
+	
+	@Query("select count(t.nameTipo)from Tipo t where t.nameTipo=nameTipo")
+	public int searchNameTipo(@Param("nameTipo") String nameTipo);
+	
 	@Query("from Tipo t where t.nameTipo like %:nameTipo%")
 	List<Tipo> buscarNombre(@Param("nameTipo") String nameTipo);
 }

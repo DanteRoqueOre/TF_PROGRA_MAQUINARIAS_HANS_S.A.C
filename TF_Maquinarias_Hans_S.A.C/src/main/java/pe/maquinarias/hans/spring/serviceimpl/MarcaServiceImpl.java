@@ -18,12 +18,14 @@ public class MarcaServiceImpl implements IMarcaService{
 	
 	@Override
 	@Transactional
-	public boolean insertar(Marca marca) {
-		Marca objMarca= maMarca.save(marca);
-		if(objMarca==null)
-			return false;
-		else
-			return true;
+	public Integer insertar(Marca marca) {
+        int rpta = maMarca.searchNameMarca(marca.getNameMarca());
+		
+		if (rpta == 0) {
+			maMarca.save(marca);
+		}
+		return rpta;
+	
 	}
 	
 	@Override

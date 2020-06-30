@@ -1,6 +1,5 @@
 package pe.maquinarias.hans.spring.controller;
 
-
 import java.security.Principal;
 
 import org.springframework.stereotype.Controller;

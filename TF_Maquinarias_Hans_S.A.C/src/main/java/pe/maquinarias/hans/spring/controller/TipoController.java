@@ -53,15 +53,16 @@ public class TipoController {
 			return "tipo";
 		}
 		else {
-				boolean flag = tService.insertar(objTipo);
-				if (flag) {
-					return "redirect:/tipo/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/tipo/irRegistrar";
-				}
+			int rpta = tService.insertar(objTipo);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe el Tipo");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listTipo";
 	}
 	
 	@RequestMapping("/actualizar")

@@ -18,12 +18,14 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	
 	@Override
 	@Transactional
-	public boolean insertar(Usuario usuario) {
-		Usuario objUsuario= uUsuario.save(usuario);
-		if(objUsuario==null)
-			return false;
-		else
-			return true;
+	public Integer insertar(Usuario usuario) {
+		int rpta = uUsuario.searchDniUsuario(usuario.getDniUsuario());
+		
+		if (rpta == 0) {
+			uUsuario.save(usuario);
+		}
+		return rpta;
+	
 	}
 	
 	@Override

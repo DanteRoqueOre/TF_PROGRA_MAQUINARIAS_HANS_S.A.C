@@ -18,13 +18,15 @@ public class TipoServiceImpl implements ITipoService{
 	
 	@Override
 	@Transactional
-	public boolean insertar(Tipo tipo) {
-		Tipo objTipo= tTipo.save(tipo);
-		if(objTipo==null)
-			return false;
-		else
-			return true;
-	}
+	public Integer insertar(Tipo tipo) {
+		int rpta = tTipo.searchNameTipo(tipo.getNameTipo());
+			
+			if (rpta == 0) {
+				tTipo.save(tipo);
+			}
+			return rpta;
+		
+		}
 	
 	@Override
 	@Transactional

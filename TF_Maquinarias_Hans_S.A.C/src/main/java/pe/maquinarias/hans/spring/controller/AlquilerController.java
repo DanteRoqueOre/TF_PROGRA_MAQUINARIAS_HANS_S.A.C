@@ -75,15 +75,16 @@ public class AlquilerController {
 			return "alquiler";
 		}
 		else {
-				boolean flag = aqService.insertar(objAlquiler);
-				if (flag) {
-					return "redirect:/alquiler/listar";
-				}
-				else {
-					model.addAttribute("mensaje", "Ocurrio un roche");
-					return "redirect:/alquiler/irRegistrar";
-				}
+			int rpta = aqService.insertar(objAlquiler);
+			if(rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe el numero de Telefono");
 			}
+			
+			else {
+				model.addAttribute("mensaje", "Se guardo correctamente");
+			}
+		}
+		return "listAlquiler";
 	}
 	
 	@RequestMapping("/actualizar")

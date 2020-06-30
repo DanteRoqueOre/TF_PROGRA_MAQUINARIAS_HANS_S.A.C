@@ -26,7 +26,7 @@ public class Administrador implements Serializable{
 	
 	@NotEmpty(message="No puede estar vacio")
 	@NotBlank(message="No puede estar en blanco")
-	@Column(name="nameAdministrador",nullable=false, length=60)
+	@Column(name="nameAdministrador",nullable=false, length=30)
 	private String nameAdministrador;
 	
 	@ManyToOne

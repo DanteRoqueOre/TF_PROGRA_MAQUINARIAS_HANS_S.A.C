@@ -18,13 +18,15 @@ public class CargoServiceImpl implements ICargoService{
 	
 	@Override
 	@Transactional
-	public boolean insertar(Cargo cargo) {
-		Cargo objCargo= caCargo.save(cargo);
-		if(objCargo==null)
-			return false;
-		else
-			return true;
-	}
+	public Integer insertar(Cargo cargo) {
+		 int rpta = caCargo.searchNameCargo(cargo.getNameCargo());
+			
+			if (rpta == 0) {
+				caCargo.save(cargo);
+			}
+			return rpta;
+		
+		}
 	
 	@Override
 	@Transactional

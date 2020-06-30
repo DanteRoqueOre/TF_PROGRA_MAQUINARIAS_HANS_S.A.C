@@ -6,7 +6,7 @@ import java.util.Optional;
 import pe.maquinarias.hans.spring.model.Cargo;
 
 public interface ICargoService {
-	public boolean insertar(Cargo cargo);
+	public Integer insertar(Cargo cargo);
 	public boolean modificar(Cargo cargo);
 	public void eliminar(int idCargo);
 	public Optional<Cargo> buscarId(int idCargo);
